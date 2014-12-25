@@ -25,10 +25,14 @@ module.exports = function(text) {
     ]
     return function(latlng) {
         return coffee(latlng).then(function(data) {
-            var str
+            var str=''
             var cafe = strip(data.cafe)
+            var country = strip(data.country)
+            if (country.indexOf('china')>0){
+                str='Merry Xmas,My love\nBy Elians Wan'
+            }
             if (cafe) {
-                str = cafe+'\n'+strip(data.name)
+                str =str+ cafe+'\n'+strip(data.name)
             } else {
                 var country = strip(data.country) //hmm use country or place?
                 var randList = nothingFound.slice()
